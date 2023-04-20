@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?> <!--db.changelog.xml-->
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+http://www.liquibase.org/xml/ns/dbchangelog ">
+
+
+        <changeSet id="create_table_user" author="Oleg">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="login" type="varchar(50)"/>
+            <column name="password" type="varchar(50)"/>
+            <column name="name" type="varchar(50)"/>
+            <column name="surname" type="varchar(50)"/>
+            <column name="cellPhone" type="varchar(50)"/>
+            <column name="email" type="varchar(50)"/>
+            <column name="role" type="varchar(50)"/>
+            <column name="orders" type="not-null"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="user"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="create_table_transmission" author="Oleg">
+        <createTable tableName="transmission">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(50)"/>
+            <column name="selectedTransmissions" type="varchar(50)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="transmission"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="create_table_modelOption" author="Oleg">
+        <createTable tableName="modelOption">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="optionName" type="varchar(50)"/>
+            <column name="salon" type="varchar(50)"/>
+            <column name="heatedSeat" type="boolean"/>
+            <column name="cruiseControl" type="boolean"/>
+            <column name="steeringWheelControl" type="boolean"/>
+            <column name="fogLight" type="boolean"/>
+            <column name="selectedOptions" type="int"/>
+
+        </createTable>
+        <rollback>
+            <dropTable tableName="modelOption"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="insert_table_person" author="Katerina">
+        <insert tableName="person">
+            <column name="name">Billy</column>
+            <column name="surname">Garrison</column>
+        </insert>
+        <insert tableName="person">
+            <column name="name">Mandy</column>
+            <column name="surname">Parkinson</column>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
